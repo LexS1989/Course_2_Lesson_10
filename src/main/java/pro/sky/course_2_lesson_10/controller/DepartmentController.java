@@ -1,11 +1,11 @@
-package pro.sky.course_2_lesson_8.controller;
+package pro.sky.course_2_lesson_10.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import pro.sky.course_2_lesson_8.model.Employee;
-import pro.sky.course_2_lesson_8.service.DepartmentService;
+import pro.sky.course_2_lesson_10.model.Employee;
+import pro.sky.course_2_lesson_10.service.DepartmentService;
 
 import java.util.List;
 import java.util.Map;

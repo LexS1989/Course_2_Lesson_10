@@ -1,8 +1,8 @@
-package pro.sky.course_2_lesson_8.service;
+package pro.sky.course_2_lesson_10.service;
 
 import org.springframework.stereotype.Service;
-import pro.sky.course_2_lesson_8.exception.EmployeeNotFoundException;
-import pro.sky.course_2_lesson_8.model.Employee;
+import pro.sky.course_2_lesson_10.exception.EmployeeNotFoundException;
+import pro.sky.course_2_lesson_10.model.Employee;
 
 import java.util.List;
 import java.util.Map;
