@@ -1,4 +1,4 @@
-package pro.sky.course_2_lesson_8.model;
+package pro.sky.course_2_lesson_10.model;
 
 import java.util.Objects;
 

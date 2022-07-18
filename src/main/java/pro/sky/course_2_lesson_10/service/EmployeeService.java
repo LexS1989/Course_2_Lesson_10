@@ -1,14 +1,12 @@
-package pro.sky.course_2_lesson_8.service;
+package pro.sky.course_2_lesson_10.service;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
-import pro.sky.course_2_lesson_8.exception.EmployeeAlreadyAddedException;
-import pro.sky.course_2_lesson_8.exception.EmployeeNotFoundException;
-import pro.sky.course_2_lesson_8.model.Employee;
+import pro.sky.course_2_lesson_10.exception.EmployeeAlreadyAddedException;
+import pro.sky.course_2_lesson_10.exception.EmployeeNotFoundException;
+import pro.sky.course_2_lesson_10.model.Employee;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class EmployeeService {
@@ -20,11 +18,13 @@ public class EmployeeService {
     }
 
     public Employee add(String firstName, String lastName, int department, double salary) {
-        Employee employee = new Employee(firstName, lastName, department, salary);
-        if (employees.containsKey(getKey(firstName, lastName))) {
+        String checkFirstName = checkName(firstName);
+        String checkLastName = checkName(lastName);
+        Employee employee = new Employee(checkFirstName, checkLastName, department, salary);
+        if (employees.containsKey(getKey(checkFirstName, checkLastName))) {
             throw new EmployeeAlreadyAddedException();
         }
-        employees.put(getKey(firstName, lastName), employee);
+        employees.put(getKey(checkFirstName, lastName), employee);
         return employee;
     }
 
@@ -41,6 +41,15 @@ public class EmployeeService {
         }
         throw new EmployeeNotFoundException();
     }
+
+    public String checkName(String name) {
+        if (!StringUtils.isAlpha(name)) {
+            throw new RuntimeException("400 Bad request");
+        }
+        String lowerCaseName = StringUtils.lowerCase(name);
+        return StringUtils.capitalize(lowerCaseName);
+    }
+
 
     public List<Employee> getEmployees() {
         return new ArrayList<>(employees.values());
